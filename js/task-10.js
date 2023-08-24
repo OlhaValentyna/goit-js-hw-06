@@ -3,14 +3,17 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
+
 const controlsDiv = document.querySelector("#controls");
 const createButton = controlsDiv.querySelector("[data-create]");
 const destroyButton = controlsDiv.querySelector("[data-destroy]");
+const input = controlsDiv.querySelector("input");
 const boxesDiv = document.querySelector("#boxes");
 
 createButton.addEventListener("click", () => {
-  const amount = Number(controlsDiv.querySelector("input").value);
+  const amount = Number(input.value);
   createBoxes(amount);
+  input.value = ""; 
 });
 
 destroyButton.addEventListener("click", destroyBoxes);
@@ -30,5 +33,6 @@ function createBoxes(amount) {
 function destroyBoxes() {
   boxesDiv.innerHTML = "";
 }
+
 
 
